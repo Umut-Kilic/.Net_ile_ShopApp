@@ -1,0 +1,15 @@
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.deps.json
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\BusinessLayer.pdb
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\DataLayer.dll
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\EntityLayer.dll
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\DataLayer.pdb
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\bin\Debug\netcoreapp3.1\EntityLayer.pdb
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.AssemblyReference.cache
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfoInputs.cache
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.AssemblyInfo.cs
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CoreCompileInputs.cache
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.csproj.CopyComplete
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.dll
+C:\Users\aracl\Masaüstü\Dersler\C#\Goksell_WebApp\BusinessLayer\obj\Debug\netcoreapp3.1\BusinessLayer.pdb
