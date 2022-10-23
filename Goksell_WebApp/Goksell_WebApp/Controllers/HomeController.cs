@@ -1,5 +1,5 @@
 ﻿using Business.Abstract;
-using Goksell_WebApp.ViewModels;
+using Goksell_WebApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ShopApp_Goksel.WebUI.Controllers

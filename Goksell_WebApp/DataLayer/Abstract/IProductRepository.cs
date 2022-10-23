@@ -12,6 +12,7 @@ namespace DataLayer.Abstract
         List<Product> GetHomePageProducts();
         Product GetProductByUrlName(string name);
         int GetCountByCategory(string category);
-
+        Product GetByIdWithCategories(int id);
+        void Update(Product product, int[] categoryIds);
     }
 }

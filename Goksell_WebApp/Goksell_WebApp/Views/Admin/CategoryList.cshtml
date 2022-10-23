@@ -1,0 +1,74 @@
+﻿@model List<Category>
+
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="h3">Admin Categories</h1>
+        <hr />
+
+        <a href="/admin/categories/create" class="btn btn-primary">Add Category</a>
+        @if (Model.Count < 1)
+        {
+            <div class="alert alert-danger">
+                Ürün Bulunamamıştır.
+            </div>
+        }
+        else
+        {
+    <div class="row">
+        <div class="col-md-1">
+
+        </div>
+        <div class="col-md-10">
+            <table class="table table-bordered">
+                @foreach (var item in Model)
+                {
+
+
+
+                    <thead>
+                        <tr>
+                            <th style="width:30px">Id</th>
+                            <th >Name</th>
+                            
+                            <th style="width:250px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@item.CategoryId</td>
+                            <td>@item.Name</td>
+                           
+                            <td>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                            <a class="btn btn-success w-100" href="/admin/categories/@item.CategoryId">Edit</a>
+                                      
+
+                                    </div>
+                                    <div class="col-md-6">
+                                        <form asp-controller="Admin" asp-action="categoryDelete" asp-route-id="@item.CategoryId" method="post">
+                                            <button class="btn btn-danger w-100">Delete</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+
+
+
+
+                }
+            </table>
+        </div> 
+        <div class="col-md-1">
+
+        </div>
+    </div>
+        }
+
+    </div>
+   
+</div>

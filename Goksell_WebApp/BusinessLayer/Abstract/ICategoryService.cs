@@ -1,12 +1,9 @@
-﻿using DataLayer.Abstract;
-using EntityLayer;
-using System;
+﻿using EntityLayer;
 using System.Collections.Generic;
-using System.Text;
 
 namespace BusinessLayer.Abstract
 {
-    public interface ICategoryService
+    public interface ICategoryService:IValidator<Category>  
     {
         Category GetById(int id);
         List<Category> GetAll();
@@ -14,5 +11,6 @@ namespace BusinessLayer.Abstract
         void Update(Category entity);
         void Delete(Category entity);
         List<Category> GetPopularCategories();
+        Category GetByIdWithProducts(int id);
     }
 }

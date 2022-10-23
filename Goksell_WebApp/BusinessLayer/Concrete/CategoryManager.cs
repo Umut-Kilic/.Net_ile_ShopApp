@@ -9,29 +9,39 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        private ICategoryRepository _categoryRepository;
-        public CategoryManager(ICategoryRepository categoryRepository)
+        private readonly IUnitofWork _unitofWork;
+        public CategoryManager(IUnitofWork unitofWork)
         {
-            this._categoryRepository = categoryRepository;
+            _unitofWork= unitofWork;
         }
+
+        public string ErrorMessage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+
         public void Create(Category entity)
         {
-            throw new NotImplementedException();
+            _unitofWork.Categories.Create(entity);
+            _unitofWork.Save();
         }
 
         public void Delete(Category entity)
         {
-            throw new NotImplementedException();
+            _unitofWork.Categories.Delete(entity);
+            _unitofWork.Save();
         }
 
         public List<Category> GetAll()
         {
-            return _categoryRepository.GetAll();
+            return _unitofWork.Categories.GetAll();
         }
 
         public Category GetById(int id)
         {
-            throw new NotImplementedException();
+            return _unitofWork.Categories.GetById(id);
+        }
+
+        public Category GetByIdWithProducts(int id)
+        {
+            return _unitofWork.Categories.GetByIdWithProducts(id);
         }
 
         public List<Category> GetPopularCategories()
@@ -40,6 +50,12 @@ namespace BusinessLayer.Concrete
         }
 
         public void Update(Category entity)
+        {
+            _unitofWork.Categories.Update(entity);
+            _unitofWork.Save();
+        }
+
+        public bool Validation(Category entity)
         {
             throw new NotImplementedException();
         }

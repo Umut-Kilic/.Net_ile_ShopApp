@@ -1,15 +1,16 @@
-﻿using EntityLayer;
-using System;
+﻿
+using BusinessLayer.Abstract;
+using EntityLayer;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Business.Abstract
 {
-    public interface IProductService
+    public interface IProductService : IValidator<Product>
     {
         Product GetById(int id);
+        Product GetByIdWithCategories(int id);
         List<Product> GetAll();
-        void Create(Product entity);
+        bool Create(Product entity);
         void Update(Product entity);
         void Delete(Product entity);
         List<Product> GetProductByCategoryName(string name, int page, int pageSize);
@@ -18,6 +19,6 @@ namespace Business.Abstract
         List<Product> GetHomePageProducts();
         Product GetProductByUrlName(string name);
         int GetCountByCategory(string category);
-
+        bool Update(Product product, int[] categoryIds);
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Business.Abstract;
 using Goksell_WebApp.Models;
-using Goksell_WebApp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 

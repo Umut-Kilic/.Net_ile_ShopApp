@@ -11,7 +11,7 @@ namespace DataLayer.Concrete
     {
         public static void Seed()
         {
-            var context = new ShopContext();
+            var context = GetContext();
             if (context.Database.GetPendingMigrations().Count() == 0)
             {
                 if (context.Categories.Count() == 0)
@@ -28,6 +28,12 @@ namespace DataLayer.Concrete
             context.SaveChanges();
 
         }
+
+        private static ShopContext GetContext()
+        {
+            return new ShopContext();
+        }
+
         private static Category[] Categories =
         {
             new Category(){Name="Telefon",Url="telefon"},

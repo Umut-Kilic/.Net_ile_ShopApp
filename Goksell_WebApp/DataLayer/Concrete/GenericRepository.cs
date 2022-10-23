@@ -7,52 +7,48 @@ using System.Text;
 
 namespace DataLayer.Concrete
 {
-    public class GenericRepository<TEntity, TContext> : IRepository<TEntity>
+    public class GenericRepository<TEntity> : IRepository<TEntity>
         where TEntity : class
-        where TContext : DbContext, new()
+
     {
+
+        protected readonly DbContext context;
+        public GenericRepository(DbContext dbContext)
+        {
+            context= dbContext;
+        }
         public void Create(TEntity entity)
         {
-            using (var context=new TContext())
-            {
-                context.Set<TEntity>().Add(entity);
-                context.SaveChanges();
-            }
+
+            context.Set<TEntity>().Add(entity);
+            
         }
 
         public void Delete(TEntity entity)
         {
-            using (var context = new TContext())
-            {
-                context.Set<TEntity>().Remove(entity);
-                context.SaveChanges();
-            }
+
+            context.Set<TEntity>().Remove(entity);
+            
         }
 
         public List<TEntity> GetAll()
         {
-            using (var context = new TContext())
-            {
-                return context.Set<TEntity>().ToList();
-            }
+
+            return context.Set<TEntity>().ToList();
+            
         }
 
         public TEntity GetById(int id)
         {
-            using (var context = new TContext())
-            {
-                return context.Set<TEntity>().Find(id);
 
-            }
+            return context.Set<TEntity>().Find(id);
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
-            using (var context = new TContext())
-            {
-                context.Entry(entity).State = EntityState.Modified;
-                context.SaveChanges();
-            }
+           
+            context.Entry(entity).State = EntityState.Modified;
+            
         }
     }
     

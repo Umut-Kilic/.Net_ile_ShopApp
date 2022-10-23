@@ -9,73 +9,125 @@ namespace Business.Concrete
 {
     public class ProductManager : IProductService
     {
-        
-        private  IProductRepository _productRepository;
-        public ProductManager(IProductRepository productRepository)
+
+        private readonly IUnitofWork _unitofWork;
+        public ProductManager(IUnitofWork unitofWork)
         {
-            _productRepository = productRepository;
+            _unitofWork = unitofWork;
         }
 
-        public void Create(Product entity)
+        public bool Create(Product entity)
         {
             //iş kuralları
-            if (entity.Name.Contains("a"))
-            {
-                _productRepository.Create(entity);
 
+            if (Validation(entity))
+            {
+                _unitofWork.Products.Create(entity);
+                _unitofWork.Save();
+                return true;
             }
+
+            return false;
+
+
         }
 
         public void Delete(Product entity)
         {
-            _productRepository.Delete(entity);
+            _unitofWork.Products.Delete(entity);
+            _unitofWork.Save();
         }
 
         public List<Product> GetAll()
         {
-            return _productRepository.GetAll();
+            return _unitofWork.Products.GetAll();
         }
 
         public Product GetById(int id)
         {
-            return _productRepository.GetById(id);
+            return _unitofWork.Products.GetById(id);
+        }
+
+        public Product GetByIdWithCategories(int id)
+        {
+            return _unitofWork.Products.GetByIdWithCategories(id);
         }
 
         public int GetCountByCategory(string category)
         {
-            return _productRepository.GetCountByCategory(category);
+            return _unitofWork.Products.GetCountByCategory(category);
         }
 
         public List<Product> GetHomePageProducts()
         {
-            return _productRepository.GetHomePageProducts();
+            return _unitofWork.Products.GetHomePageProducts();
         }
 
         public List<Product> GetProductByCategoryName(string name, int page, int pageSize)
         {
-            return _productRepository.GetProductByCategoryName(name,page,pageSize);
+            return _unitofWork.Products.GetProductByCategoryName(name,page,pageSize);
         }
 
         public Product GetProductByUrlName(string name)
         {
-            return _productRepository.GetProductByUrlName(name);
+            return _unitofWork.Products.GetProductByUrlName(name);
         }
 
         public Product GetProductDetails(int id)
         {
-            return _productRepository.GetProductDetails(id);
+            return _unitofWork.Products.GetProductDetails(id);
         }
 
        
 
         public List<Product> GetSearcResult(string s)
         {
-            return _productRepository.GetSearcResult(s);
+            return _unitofWork.Products.GetSearcResult(s);
         }
 
         public void Update(Product entity)
         {
-            _productRepository.Update(entity);
+            _unitofWork.Products.Update(entity);
+            _unitofWork.Save();
+        }
+
+        public bool Update(Product product, int[] categoryIds)
+        {
+            if (Validation(product))
+            {
+                if (categoryIds.Length == 0)
+                {
+                    ErrorMessage += "Ürün için en az 1 kategori seçmelisiniz";
+                    return false;
+                }
+                _unitofWork.Products.Update(product);
+                _unitofWork.Save();
+                return true;
+            }
+
+            return false;
+
+        }
+
+
+        public string ErrorMessage { get ; set ; }
+
+        public bool Validation(Product entity)
+        {
+            var isValid = true;
+
+            if (string.IsNullOrEmpty(entity.Name))
+            {
+                ErrorMessage += "Ürün ismi girmelisiniz.\n";
+                isValid = false;
+            }
+            if (entity.Price<0)
+            {
+                ErrorMessage += "Ürün fiyatı negatif olamaz.\n";
+                isValid = false;
+            }
+
+            return isValid;
         }
     }
 }
