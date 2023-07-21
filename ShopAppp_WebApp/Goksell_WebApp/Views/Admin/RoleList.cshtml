@@ -1,0 +1,61 @@
+﻿@model IEnumerable<IdentityRole>
+
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Role List</h1>
+        <hr />
+
+        <a class="btn btn-primary btn-sm" href="/admin/role/create">Add role</a>
+
+        <table class="table table-bordered text-center align-content-center">
+            <thead>
+                <tr>
+                    <th style="width : 100px;">Id</th>
+                    <th>Role Name</th>
+                    <th style="width : 250px;" ></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model.Count() > 0)
+                {
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.Name</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <a href="/admin/role/@item.Id" class="btn btn-primary btn-sm w-100 text-center">Edit</a>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <form asp-controller="Admin" asp-action="roleDelete" asp-route-id="@item.Id" method="post">
+                                            <button class="btn btn-danger btn-sm w-100 text-center" type="submit">Delete</button>
+
+                                        </form>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <div class="alert alert-warning">
+                        <h3>No Roles</h3>
+                    </div>
+                }
+                .
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
